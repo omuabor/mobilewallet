@@ -16,7 +16,6 @@ public class MobileWallet implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "requestId_sequence")
     private long requestId;
 
-    private String walletNumber;
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -34,7 +33,6 @@ public class MobileWallet implements Serializable {
     }
 
     public MobileWallet(
-            String walletNumber,
             String firstName,
             String lastName,
             String phoneNumber,
@@ -44,7 +42,6 @@ public class MobileWallet implements Serializable {
             String address,
             String accountType,
             String dateOfBirth) {
-        this.walletNumber = walletNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -58,7 +55,6 @@ public class MobileWallet implements Serializable {
 
     public MobileWallet(
             long requestId,
-            String walletNumber,
             String firstName,
             String lastName,
             String phoneNumber,
@@ -71,7 +67,6 @@ public class MobileWallet implements Serializable {
             String emailAddress,
             String dateOfBirth) {
         this.requestId = requestId;
-        this.walletNumber = walletNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -91,14 +86,6 @@ public class MobileWallet implements Serializable {
 
     public void setRequestId(long requestId) {
         this.requestId = requestId;
-    }
-
-    public String getWalletNumber() {
-        return walletNumber;
-    }
-
-    public void setWalletNumber(String walletNumber) {
-        this.walletNumber = walletNumber;
     }
 
     public String getDateOfBirth() {
@@ -190,8 +177,7 @@ public class MobileWallet implements Serializable {
         return "MobileWallet [accountType=" + accountType + ", address=" + address + ", bankVerificationNumber="
                 + bankVerificationNumber + ", dateOfBirth=" + dateOfBirth + ", emailAddress=" + emailAddress
                 + ", firstName=" + firstName + ", gender=" + gender + ", lastName=" + lastName + ", phoneNumber="
-                + phoneNumber + ", referralCode=" + referralCode + ", requestId=" + requestId + ", walletNumber="
-                + walletNumber + "]";
+                + phoneNumber + ", referralCode=" + referralCode + ", requestId=" + requestId + "]";
     }
 
 }
