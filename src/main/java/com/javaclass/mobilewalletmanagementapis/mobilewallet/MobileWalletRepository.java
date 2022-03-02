@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MobileWalletRepository extends JpaRepository<MobileWallet, Long> {
 
-    Optional<List<MobileWallet>> findByQueryItem(String fetchAccountRequest.getQueryItem());
+    Optional<List<MobileWallet>> findByQueryItem(String queryItem);
 
 }

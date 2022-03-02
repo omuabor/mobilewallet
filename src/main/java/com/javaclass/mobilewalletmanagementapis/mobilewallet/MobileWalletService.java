@@ -39,4 +39,18 @@ public class MobileWalletService {
 
     }
 
+    public void updateAccount(UpdateAccountRequest updateAccountRequest ) {
+        if(updateAccountRequest == instanceof(MobileWallet)){
+            mobileWalletRepository.save(updateAccountRequest);
+        }
+        
+    }
+
+    public void disableAccount(DisableAccountRequest disableAccountRequest) {
+        boolean accountDisabled = false;
+
+        mobileWalletRepository.save(disableAccountRequest);
+        accountDisabled = !accountDisabled;
+    }
+
 }

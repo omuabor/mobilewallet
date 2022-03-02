@@ -43,4 +43,21 @@ public class MobileWalletController {
 
     }
 
+
+    @PutMapping("/update-account")
+    @ResponseBody
+    public UpdateAccountResponse updateAccount(@RequestBody UpdateAccountRequest updateAccountRequest) {
+        mobileWalletService.updateAccount(updateAccountRequest);
+
+        return new UpdateAccountResponse("000", "success", "Account updated");
+    }
+
+    @PutMapping("/disable-account")
+    @ResponseBody
+    public DisableAccountResponse disableAccount(@RequestBody DisableAccountRequest disableAccountRequest) {
+        mobileWalletService.disableAccount(disableAccountRequest);
+
+        return new DisableAccountResponse("000", "success", "Account disabled");
+    }
+
 }
