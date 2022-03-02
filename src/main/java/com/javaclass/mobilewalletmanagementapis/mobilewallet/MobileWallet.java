@@ -27,6 +27,7 @@ public class MobileWallet implements Serializable {
     private String accountType;
     private String emailAddress;
     private String dateOfBirth;
+    private boolean accountDisabled = false;
 
     public MobileWallet() {
 
@@ -41,7 +42,8 @@ public class MobileWallet implements Serializable {
             String bankVerificationNumber,
             String address,
             String accountType,
-            String dateOfBirth) {
+            String dateOfBirth,
+            boolean accountDisabled) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -51,6 +53,7 @@ public class MobileWallet implements Serializable {
         this.address = address;
         this.accountType = accountType;
         this.dateOfBirth = dateOfBirth;
+        this.accountDisabled = accountDisabled
     }
 
     public MobileWallet(
@@ -65,7 +68,8 @@ public class MobileWallet implements Serializable {
             String referralCode,
             String accountType,
             String emailAddress,
-            String dateOfBirth) {
+            String dateOfBirth,
+            boolean accountDisabled) {
         this.requestId = requestId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -78,6 +82,7 @@ public class MobileWallet implements Serializable {
         this.accountType = accountType;
         this.emailAddress = emailAddress;
         this.dateOfBirth = dateOfBirth;
+        this.accountDisabled = accountDisabled
     }
 
     public long getRequestId() {
@@ -172,12 +177,21 @@ public class MobileWallet implements Serializable {
         this.emailAddress = emailAddress;
     }
 
+    public boolean getAccountDisabled() {
+        return accountDisabled;
+    }
+
+    public void setAccountDisabled(boolean accountDisabled) {
+        this.accountDisabled = accountDisabled;
+    }
+
     @Override
     public String toString() {
         return "MobileWallet [accountType=" + accountType + ", address=" + address + ", bankVerificationNumber="
                 + bankVerificationNumber + ", dateOfBirth=" + dateOfBirth + ", emailAddress=" + emailAddress
                 + ", firstName=" + firstName + ", gender=" + gender + ", lastName=" + lastName + ", phoneNumber="
-                + phoneNumber + ", referralCode=" + referralCode + ", requestId=" + requestId + "]";
+                + phoneNumber + ", referralCode=" + referralCode + ", requestId=" + requestId + ", accountDisabled=" 
+                + accountDisabled + "]";
     }
 
 }

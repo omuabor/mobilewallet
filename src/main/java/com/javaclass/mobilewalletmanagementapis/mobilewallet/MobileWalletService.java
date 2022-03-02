@@ -47,10 +47,11 @@ public class MobileWalletService {
     }
 
     public void disableAccount(DisableAccountRequest disableAccountRequest) {
-        boolean accountDisabled = false;
+        
+        disableAccountRequest.accountDisabled = !disableAccountRequest.accountDisabled;
 
         mobileWalletRepository.save(disableAccountRequest);
-        accountDisabled = !accountDisabled;
+        
     }
 
 }
