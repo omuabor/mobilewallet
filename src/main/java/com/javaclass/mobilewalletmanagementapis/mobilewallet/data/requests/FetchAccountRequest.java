@@ -1,4 +1,4 @@
-package com.javaclass.mobilewalletmanagementapis.mobilewallet;
+package com.javaclass.mobilewalletmanagementapis.mobilewallet.data.requests;
 
 public class FetchAccountRequest {
     private long requestId;

@@ -1,16 +1,15 @@
-package com.javaclass.mobilewalletmanagementapis.mobilewallet;
+package com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses;
 
-public class AccountUpdateResponse{
+public class DisableAccountResponse{
     private String code;
     private String message;
     private String otherDetails;
-}
 
-    public AccountUpdateResponse() {
+    public DisableAccountResponse() {
 
     }
 
-    public AccountUpdateResponse(String code, String message, String otherDetails) {
+    public DisableAccountResponse(String code, String message, String otherDetails) {
         this.code = code;
         this.message = message;
         this.otherDetails = otherDetails;

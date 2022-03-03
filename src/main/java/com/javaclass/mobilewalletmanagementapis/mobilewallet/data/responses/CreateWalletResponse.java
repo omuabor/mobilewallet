@@ -1,17 +1,14 @@
-package com.javaclass.mobilewalletmanagementapis.mobilewallet;
+package com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses;
 
-import java.util.List;
-
-public class FetchAccountResponse {
+public class CreateWalletResponse {
     private String code;
     private String message;
-    private List<MobileWallet> otherDetails;
+    private String otherDetails;
 
-    public FetchAccountResponse() {
-
-    }
-
-    public FetchAccountResponse(String code, String message, List<MobileWallet> otherDetails) {
+    public CreateWalletResponse(
+            String code,
+            String message,
+            String otherDetails) {
         this.code = code;
         this.message = message;
         this.otherDetails = otherDetails;
@@ -33,11 +30,11 @@ public class FetchAccountResponse {
         this.message = message;
     }
 
-    public List<MobileWallet> getOtherDetails() {
+    public String getOtherDetails() {
         return otherDetails;
     }
 
-    public void setOtherDetails(List<MobileWallet> otherDetails) {
+    public void setOtherDetails(String otherDetails) {
         this.otherDetails = otherDetails;
     }
 
