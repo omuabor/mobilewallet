@@ -28,6 +28,7 @@ public class MobileWallet implements Serializable {
     private String emailAddress;
     private String dateOfBirth;
     private boolean accountDisabled = false;
+    private String queryItem;
 
     public MobileWallet() {
 
@@ -69,7 +70,8 @@ public class MobileWallet implements Serializable {
             String accountType,
             String emailAddress,
             String dateOfBirth,
-            boolean accountDisabled) {
+            boolean accountDisabled
+            String queryItem) {
         this.requestId = requestId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -82,7 +84,8 @@ public class MobileWallet implements Serializable {
         this.accountType = accountType;
         this.emailAddress = emailAddress;
         this.dateOfBirth = dateOfBirth;
-        this.accountDisabled = accountDisabled
+        this.accountDisabled = accountDisabled;
+        this.queryItem = queryItem;
     }
 
     public long getRequestId() {
