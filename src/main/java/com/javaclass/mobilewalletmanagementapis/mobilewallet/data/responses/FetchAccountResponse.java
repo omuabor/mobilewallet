@@ -1,6 +1,7 @@
 package com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses;
 
 import java.util.List;
+import com.javaclass.mobilewalletmanagementapis.mobilewallet.MobileWallet;
 
 public class FetchAccountResponse {
     private String code;

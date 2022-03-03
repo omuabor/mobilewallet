@@ -1,21 +1,9 @@
-package com.javaclass.mobilewalletmanagementapis.mobilewallet;
+package com.javaclass.mobilewalletmanagementapis.mobilewallet.data.requests;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import java.io.Serializable;
+public class CreateWalletRequest {
 
-@Entity
-@Table(name = "WLT_T_ACCOUNT_DETAILS")
-public class MobileWallet implements Serializable {
-    @Id
-    @SequenceGenerator(name = "requestId_sequence", sequenceName = "requestId_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "requestId_sequence")
     private long requestId;
-
+    private String dateOfBirth;
     private String firstName;
     private String lastName;
     private String phoneNumber;
@@ -26,39 +14,14 @@ public class MobileWallet implements Serializable {
     private String referralCode;
     private String accountType;
     private String emailAddress;
-    private String dateOfBirth;
-    private boolean accountDisabled;
-    private String queryItem;
 
-    public MobileWallet() {
+    public CreateWalletRequest() {
 
     }
 
-    public MobileWallet(
-            String firstName,
-            String lastName,
-            String phoneNumber,
-            String gender,
-            String secretWord,
-            String bankVerificationNumber,
-            String address,
-            String accountType,
-            String dateOfBirth,
-            boolean accountDisabled) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.gender = gender;
-        this.secretWord = secretWord;
-        this.bankVerificationNumber = bankVerificationNumber;
-        this.address = address;
-        this.accountType = accountType;
-        this.dateOfBirth = dateOfBirth;
-        this.accountDisabled = accountDisabled;
-    }
-
-    public MobileWallet(
+    public CreateWalletRequest(
             long requestId,
+            String dateOfBirth,
             String firstName,
             String lastName,
             String phoneNumber,
@@ -68,11 +31,10 @@ public class MobileWallet implements Serializable {
             String address,
             String referralCode,
             String accountType,
-            String emailAddress,
-            String dateOfBirth,
-            boolean accountDisabled,
-            String queryItem) {
+            String emailAddress) {
+
         this.requestId = requestId;
+        this.dateOfBirth = dateOfBirth;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -83,9 +45,6 @@ public class MobileWallet implements Serializable {
         this.referralCode = referralCode;
         this.accountType = accountType;
         this.emailAddress = emailAddress;
-        this.dateOfBirth = dateOfBirth;
-        this.accountDisabled = accountDisabled;
-        this.queryItem = queryItem;
     }
 
     public long getRequestId() {
@@ -178,23 +137,6 @@ public class MobileWallet implements Serializable {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
-    }
-
-    public boolean getAccountDisabled() {
-        return accountDisabled;
-    }
-
-    public void setAccountDisabled(boolean accountDisabled) {
-        this.accountDisabled = accountDisabled;
-    }
-
-    @Override
-    public String toString() {
-        return "MobileWallet [accountDisabled=" + accountDisabled + ", accountType=" + accountType + ", address="
-                + address + ", bankVerificationNumber=" + bankVerificationNumber + ", dateOfBirth=" + dateOfBirth
-                + ", emailAddress=" + emailAddress + ", firstName=" + firstName + ", gender=" + gender + ", lastName="
-                + lastName + ", phoneNumber=" + phoneNumber + ", queryItem=" + queryItem + ", referralCode="
-                + referralCode + ", requestId=" + requestId + "]";
     }
 
 }

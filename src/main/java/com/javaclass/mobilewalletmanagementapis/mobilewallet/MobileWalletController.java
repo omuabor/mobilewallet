@@ -1,14 +1,25 @@
 package com.javaclass.mobilewalletmanagementapis.mobilewallet;
 
 import java.util.List;
+
+import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.requests.AccountUpdateRequest;
+import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.requests.CreateWalletRequest;
+import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.requests.DisableAccountRequest;
+import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.requests.FetchAccountRequest;
+import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses.AccountUpdateResponse;
+import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses.CreateWalletResponse;
+import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses.DisableAccountResponse;
+import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses.FetchAccountResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,7 +35,7 @@ public class MobileWalletController {
     }
 
     @PostMapping("/open-account")
-    public ResponseEntity<CreateWalletResponse> openAccount(@RequestBody MobileWallet newMobileWallet) {
+    public ResponseEntity<CreateWalletResponse> openAccount(@RequestBody CreateWalletRequest newMobileWallet) {
         mobileWalletService.addNewAccount(newMobileWallet);
 
         CreateWalletResponse createWalletResponse = new CreateWalletResponse(
@@ -43,19 +54,22 @@ public class MobileWalletController {
 
     }
 
-
-    @PutMapping("/update-account")
+    @PutMapping("/update-account/{queryItem}")
     @ResponseBody
-    public UpdateAccountResponse updateAccount(@RequestBody UpdateAccountRequest updateAccountRequest) {
-        mobileWalletService.updateAccount(updateAccountRequest);
+    public AccountUpdateResponse updateAccount(
+            @RequestBody AccountUpdateRequest accountUpdateRequest,
+            @PathVariable("queryItem") String queryItem) {
+        mobileWalletService.updateAccount(accountUpdateRequest, queryItem);
 
-        return new UpdateAccountResponse("000", "success", "Account updated");
+        return new AccountUpdateResponse("000", "success", "Account updated");
     }
 
-    @PutMapping("/disable-account")
+    @PutMapping("/disable-account/{queryItem}")
     @ResponseBody
-    public DisableAccountResponse disableAccount(@RequestBody DisableAccountRequest disableAccountRequest) {
-        mobileWalletService.disableAccount(disableAccountRequest);
+    public DisableAccountResponse disableAccount(
+            @RequestBody DisableAccountRequest disableAccountRequest,
+            @PathVariable("queryItem") String queryItem) {
+        mobileWalletService.disableAccount(disableAccountRequest, queryItem);
 
         return new DisableAccountResponse("000", "success", "Account disabled");
     }

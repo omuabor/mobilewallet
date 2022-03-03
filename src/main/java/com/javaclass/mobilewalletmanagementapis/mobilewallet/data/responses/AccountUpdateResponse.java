@@ -1,10 +1,9 @@
 package com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses;
 
-public class AccountUpdateResponse{
+public class AccountUpdateResponse {
     private String code;
     private String message;
     private String otherDetails;
-}
 
     public AccountUpdateResponse() {
 
