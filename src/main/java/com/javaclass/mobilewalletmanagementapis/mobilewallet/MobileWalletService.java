@@ -56,7 +56,7 @@ public class MobileWalletService {
         MobileWallet update = mapper.convertValue(accountUpdateRequest, MobileWallet.class);
 
         if (wallet.isPresent()) {
-            MobileWallet incumbentWallet = (MobileWallet) wallet.get();
+            MobileWallet incumbentWallet =  wallet.get[0];
 
             if (update.equals(incumbentWallet)) {
                 throw new IllegalStateException("Nothing to update");
