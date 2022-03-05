@@ -1,6 +1,6 @@
 package com.javaclass.mobilewalletmanagementapis.mobilewallet.data.requests;
 
-public class AccountUpdateRequest{
+public class AccountUpdateRequest {
     private long requestId;
     private String dateOfBirth;
     private String firstName;
@@ -19,19 +19,19 @@ public class AccountUpdateRequest{
     }
 
     public AccountUpdateRequest(
-        long requestId,
-        String dateOfBirth,
-        String firstName,
-        String lastName,
-        String phoneNumber,
-        String gender,
-        String secretWord,
-        String bankVerificationNumber,
-        String address,
-        String referralCode,
-        String accountType,
-        String emailAddress) {
-        
+            long requestId,
+            String dateOfBirth,
+            String firstName,
+            String lastName,
+            String phoneNumber,
+            String gender,
+            String secretWord,
+            String bankVerificationNumber,
+            String address,
+            String referralCode,
+            String accountType,
+            String emailAddress) {
+
         this.requestId = requestId;
         this.dateOfBirth = dateOfBirth;
         this.firstName = firstName;

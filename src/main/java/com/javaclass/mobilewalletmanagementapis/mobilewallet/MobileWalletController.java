@@ -1,7 +1,6 @@
 package com.javaclass.mobilewalletmanagementapis.mobilewallet;
 
 import java.util.List;
-
 import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.requests.AccountUpdateRequest;
 import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.requests.CreateWalletRequest;
 import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.requests.DisableAccountRequest;
@@ -10,7 +9,6 @@ import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses.Acco
 import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses.CreateWalletResponse;
 import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses.DisableAccountResponse;
 import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses.FetchAccountResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,7 +43,7 @@ public class MobileWalletController {
 
     }
 
-    @GetMapping("/fetch-account/{queryItem}")
+    @GetMapping("/fetch-account")
     @ResponseBody
     public FetchAccountResponse fetchAccount(@RequestBody FetchAccountRequest fetchAccountRequest) {
         List<MobileWallet> details = mobileWalletService.fetchAccount(fetchAccountRequest);
@@ -54,22 +52,23 @@ public class MobileWalletController {
 
     }
 
-    @PutMapping("/update-account/{queryItem}")
+    @PutMapping("/update-account/{phoneNumber}")
     @ResponseBody
     public AccountUpdateResponse updateAccount(
             @RequestBody AccountUpdateRequest accountUpdateRequest,
-            @PathVariable("queryItem") String queryItem) {
-        mobileWalletService.updateAccount(accountUpdateRequest, queryItem);
+            @PathVariable("phoneNumber") String phoneNumber) {
 
-        return new AccountUpdateResponse("000", "success", "Account updated");
+        mobileWalletService.updateAccount(accountUpdateRequest, phoneNumber);
+
+        return new AccountUpdateResponse("000", "success", "Update successful");
     }
 
-    @PutMapping("/disable-account/{queryItem}")
+    @PutMapping("/disable-account/{phoneNumber}")
     @ResponseBody
     public DisableAccountResponse disableAccount(
             @RequestBody DisableAccountRequest disableAccountRequest,
-            @PathVariable("queryItem") String queryItem) {
-        mobileWalletService.disableAccount(disableAccountRequest, queryItem);
+            @PathVariable("phoneNumber") String phoneNumber) {
+        mobileWalletService.disableAccount(disableAccountRequest, phoneNumber);
 
         return new DisableAccountResponse("000", "success", "Account disabled");
     }

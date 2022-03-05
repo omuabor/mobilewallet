@@ -8,6 +8,11 @@ public class FetchAccountRequest {
     public FetchAccountRequest() {
     }
 
+    public FetchAccountRequest(String queryItemType, String queryItem) {
+        this.queryItemType = queryItemType;
+        this.queryItem = queryItem;
+    }
+
     public FetchAccountRequest(long requestId, String queryItemType, String queryItem) {
         this.requestId = requestId;
         this.queryItemType = queryItemType;

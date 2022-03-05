@@ -1,24 +1,26 @@
 package com.javaclass.mobilewalletmanagementapis.mobilewallet;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Random;
 
 @Entity
 @Table(name = "WLT_T_ACCOUNT_DETAILS")
 public class MobileWallet implements Serializable {
-    @Id
-    @SequenceGenerator(name = "requestId_sequence", sequenceName = "requestId_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "requestId_sequence")
-    private long requestId;
+
+    Random ran = new Random();
+
+    private long requestId = ran.nextInt(99999);
 
     private String firstName;
     private String lastName;
+
+    @Id
     private String phoneNumber;
+
     private String gender;
     private String secretWord;
     private String bankVerificationNumber;
@@ -28,7 +30,6 @@ public class MobileWallet implements Serializable {
     private String emailAddress;
     private String dateOfBirth;
     private boolean accountDisabled;
-    private String queryItem;
 
     public MobileWallet() {
 
@@ -70,8 +71,7 @@ public class MobileWallet implements Serializable {
             String accountType,
             String emailAddress,
             String dateOfBirth,
-            boolean accountDisabled,
-            String queryItem) {
+            boolean accountDisabled) {
         this.requestId = requestId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -85,7 +85,7 @@ public class MobileWallet implements Serializable {
         this.emailAddress = emailAddress;
         this.dateOfBirth = dateOfBirth;
         this.accountDisabled = accountDisabled;
-        this.queryItem = queryItem;
+
     }
 
     public long getRequestId() {
@@ -193,7 +193,7 @@ public class MobileWallet implements Serializable {
         return "MobileWallet [accountDisabled=" + accountDisabled + ", accountType=" + accountType + ", address="
                 + address + ", bankVerificationNumber=" + bankVerificationNumber + ", dateOfBirth=" + dateOfBirth
                 + ", emailAddress=" + emailAddress + ", firstName=" + firstName + ", gender=" + gender + ", lastName="
-                + lastName + ", phoneNumber=" + phoneNumber + ", queryItem=" + queryItem + ", referralCode="
+                + lastName + ", phoneNumber=" + phoneNumber + ", referralCode="
                 + referralCode + ", requestId=" + requestId + "]";
     }
 
