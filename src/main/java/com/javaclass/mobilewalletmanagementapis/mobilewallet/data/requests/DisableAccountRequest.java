@@ -13,6 +13,17 @@ public class DisableAccountRequest {
     }
 
     public DisableAccountRequest(
+            String phoneNumber,
+            String bankVerificationNumber,
+            String emailAddress,
+            boolean accountDisabled) {
+        this.phoneNumber = phoneNumber;
+        this.bankVerificationNumber = bankVerificationNumber;
+        this.emailAddress = emailAddress;
+        this.accountDisabled = accountDisabled;
+    }
+
+    public DisableAccountRequest(
             long requestId,
             String phoneNumber,
             String bankVerificationNumber,

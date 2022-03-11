@@ -1,6 +1,7 @@
-package com.javaclass.mobilewalletmanagementapis.mobilewallet;
+package com.javaclass.mobilewalletmanagementapis.mobilewallet.controllers;
 
 import java.util.List;
+import com.javaclass.mobilewalletmanagementapis.mobilewallet.entities.MobileWallet;
 import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.requests.AccountUpdateRequest;
 import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.requests.CreateWalletRequest;
 import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.requests.DisableAccountRequest;
@@ -9,13 +10,14 @@ import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses.Acco
 import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses.CreateWalletResponse;
 import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses.DisableAccountResponse;
 import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses.FetchAccountResponse;
+import com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses.ResponseEnum;
+import com.javaclass.mobilewalletmanagementapis.mobilewallet.services.MobileWalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +39,9 @@ public class MobileWalletController {
         mobileWalletService.addNewAccount(newMobileWallet);
 
         CreateWalletResponse createWalletResponse = new CreateWalletResponse(
-                "000", "Success", "Account opened successfully");
+                ResponseEnum.SUCCESS.getCode(),
+                ResponseEnum.SUCCESS.getMessage(),
+                ResponseEnum.SUCCESS.getDescription());
 
         return new ResponseEntity<>(createWalletResponse, HttpStatus.OK);
 
@@ -48,29 +52,35 @@ public class MobileWalletController {
     public FetchAccountResponse fetchAccount(@RequestBody FetchAccountRequest fetchAccountRequest) {
         List<MobileWallet> details = mobileWalletService.fetchAccount(fetchAccountRequest);
 
-        return new FetchAccountResponse("000", "success", details);
+        return new FetchAccountResponse(
+                ResponseEnum.SUCCESS.getCode(),
+                ResponseEnum.SUCCESS.getMessage(),
+                details);
 
     }
 
-    @PutMapping("/update-account/{phoneNumber}")
+    @PutMapping("/update-account")
     @ResponseBody
     public AccountUpdateResponse updateAccount(
-            @RequestBody AccountUpdateRequest accountUpdateRequest,
-            @PathVariable("phoneNumber") String phoneNumber) {
+            @RequestBody AccountUpdateRequest accountUpdateRequest) {
 
-        mobileWalletService.updateAccount(accountUpdateRequest, phoneNumber);
+        mobileWalletService.updateAccount(accountUpdateRequest);
 
-        return new AccountUpdateResponse("000", "success", "Update successful");
+        return new AccountUpdateResponse(
+                ResponseEnum.SUCCESS.getCode(),
+                ResponseEnum.SUCCESS.getMessage(),
+                "Update successful");
     }
 
-    @PutMapping("/disable-account/{phoneNumber}")
+    @PutMapping("/disable-account")
     @ResponseBody
-    public DisableAccountResponse disableAccount(
-            @RequestBody DisableAccountRequest disableAccountRequest,
-            @PathVariable("phoneNumber") String phoneNumber) {
-        mobileWalletService.disableAccount(disableAccountRequest, phoneNumber);
+    public DisableAccountResponse disableAccount(@RequestBody DisableAccountRequest disableAccountRequest) {
+        mobileWalletService.disableAccount(disableAccountRequest);
 
-        return new DisableAccountResponse("000", "success", "Account disabled");
+        return new DisableAccountResponse(
+                ResponseEnum.SUCCESS.getCode(),
+                ResponseEnum.SUCCESS.getMessage(),
+                "Account disabled");
     }
 
 }

@@ -95,6 +95,10 @@ public class CreateWalletRequest {
         this.gender = gender;
     }
 
+    public String getSecretWord() {
+        return secretWord;
+    }
+
     public void setSecretWord(String secretWord) {
         this.secretWord = secretWord;
     }

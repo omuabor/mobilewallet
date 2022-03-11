@@ -1,11 +1,9 @@
 package com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses;
 
 import java.util.List;
-import com.javaclass.mobilewalletmanagementapis.mobilewallet.MobileWallet;
+import com.javaclass.mobilewalletmanagementapis.mobilewallet.entities.MobileWallet;
 
-public class FetchAccountResponse {
-    private String code;
-    private String message;
+public class FetchAccountResponse extends BaseResponse {
     private List<MobileWallet> otherDetails;
 
     public FetchAccountResponse() {
@@ -13,33 +11,16 @@ public class FetchAccountResponse {
     }
 
     public FetchAccountResponse(String code, String message, List<MobileWallet> otherDetails) {
-        this.code = code;
-        this.message = message;
+        super(code, message);
         this.otherDetails = otherDetails;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public List<MobileWallet> getOtherDetails() {
-        return otherDetails;
     }
 
     public void setOtherDetails(List<MobileWallet> otherDetails) {
         this.otherDetails = otherDetails;
+    }
+
+    public List<MobileWallet> getOtherDetails() {
+        return otherDetails;
     }
 
 }

@@ -1,14 +1,13 @@
-package com.javaclass.mobilewalletmanagementapis.mobilewallet;
+package com.javaclass.mobilewalletmanagementapis.mobilewallet.respositories;
 
-import java.util.List;
 import java.util.Optional;
-
+import com.javaclass.mobilewalletmanagementapis.mobilewallet.entities.MobileWallet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MobileWalletRepository extends JpaRepository<MobileWallet, String> {
 
-    Optional<List<MobileWallet>> findByPhoneNumber(String phoneNumber);
+    Optional<MobileWallet> findByPhoneNumber(String phoneNumber);
 
 }

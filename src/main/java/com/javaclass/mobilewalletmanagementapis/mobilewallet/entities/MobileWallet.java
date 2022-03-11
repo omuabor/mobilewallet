@@ -1,19 +1,13 @@
-package com.javaclass.mobilewalletmanagementapis.mobilewallet;
+package com.javaclass.mobilewalletmanagementapis.mobilewallet.entities;
 
 import javax.persistence.Entity;
-
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.Random;
 
 @Entity
 @Table(name = "WLT_T_ACCOUNT_DETAILS")
 public class MobileWallet implements Serializable {
-
-    Random ran = new Random();
-
-    private long requestId = ran.nextInt(99999);
 
     private String firstName;
     private String lastName;
@@ -30,6 +24,7 @@ public class MobileWallet implements Serializable {
     private String emailAddress;
     private String dateOfBirth;
     private boolean accountDisabled;
+    private long requestId;
 
     public MobileWallet() {
 
@@ -43,7 +38,6 @@ public class MobileWallet implements Serializable {
             String secretWord,
             String bankVerificationNumber,
             String address,
-            String accountType,
             String dateOfBirth,
             boolean accountDisabled) {
         this.firstName = firstName;
@@ -53,7 +47,6 @@ public class MobileWallet implements Serializable {
         this.secretWord = secretWord;
         this.bankVerificationNumber = bankVerificationNumber;
         this.address = address;
-        this.accountType = accountType;
         this.dateOfBirth = dateOfBirth;
         this.accountDisabled = accountDisabled;
     }
@@ -140,6 +133,10 @@ public class MobileWallet implements Serializable {
         this.secretWord = secretWord;
     }
 
+    public String getSecretWord() {
+        return secretWord;
+    }
+
     public String getBankVerificationNumber() {
         return bankVerificationNumber;
     }
@@ -194,7 +191,7 @@ public class MobileWallet implements Serializable {
                 + address + ", bankVerificationNumber=" + bankVerificationNumber + ", dateOfBirth=" + dateOfBirth
                 + ", emailAddress=" + emailAddress + ", firstName=" + firstName + ", gender=" + gender + ", lastName="
                 + lastName + ", phoneNumber=" + phoneNumber + ", referralCode="
-                + referralCode + ", requestId=" + requestId + "]";
+                + referralCode + "]";
     }
 
 }

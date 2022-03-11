@@ -1,8 +1,7 @@
 package com.javaclass.mobilewalletmanagementapis.mobilewallet.data.responses;
 
-public class AccountUpdateResponse {
-    private String code;
-    private String message;
+public class AccountUpdateResponse extends BaseResponse {
+
     private String otherDetails;
 
     public AccountUpdateResponse() {
@@ -10,25 +9,8 @@ public class AccountUpdateResponse {
     }
 
     public AccountUpdateResponse(String code, String message, String otherDetails) {
-        this.code = code;
-        this.message = message;
+        super(code, message);
         this.otherDetails = otherDetails;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
     public String getOtherDetails() {
