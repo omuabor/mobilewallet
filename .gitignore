@@ -1,8 +1,10 @@
 HELP.md
-!**/src/main/resources/application.properties
+src/main/resources/application.properties
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
+Procfile/
+src/Dockerfile
 !**/src/test/**/target/
 
 ### STS ###
