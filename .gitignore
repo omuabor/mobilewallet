@@ -1,10 +1,20 @@
 HELP.md
+<<<<<<< HEAD
 src/main/resources/application.properties
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 Procfile/
 src/Dockerfile
+=======
+/src/main/resources/application.properties
+
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+src/Dockerfile
+Procfile
+>>>>>>> ff2f83865b0ee6692b3476a1a4477a2fcf68010c
 !**/src/test/**/target/
 
 ### STS ###
