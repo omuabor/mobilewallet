@@ -11,6 +11,9 @@ import com.javaclass.mobilewalletmanagementapis.mobilewallet.respositories.Mobil
 import java.util.List;
 import java.util.Optional;
 import java.util.Collections;
+
+import com.javaclass.mobilewalletmanagementapis.reversal.entity.Balances;
+import com.javaclass.mobilewalletmanagementapis.reversal.repo.IBalanceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +25,10 @@ public class MobileWalletService {
     MobileWalletService(MobileWalletRepository mobileWalletRepository) {
         this.mobileWalletRepository = mobileWalletRepository;
     }
+
+    @Autowired
+    private IBalanceRepo iBalanceRepo;
+
 
     public void addNewAccount(CreateWalletRequest newMobileWallet) {
 
@@ -37,6 +44,7 @@ public class MobileWalletService {
         ObjectMapper mapper = new ObjectMapper();
         MobileWallet mobileWallet = mapper.convertValue(newMobileWallet, MobileWallet.class);
 
+        iBalanceRepo.save(new Balances(mobileWallet.getPhoneNumber(), 2000));
         mobileWalletRepository.save(mobileWallet);
     }
 
@@ -84,5 +92,4 @@ public class MobileWalletService {
             mobileWalletRepository.save(disabledAccount);
         }
     }
-
 }

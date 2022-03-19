@@ -1,10 +1,12 @@
 package com.javaclass.mobilewalletmanagementapis.mobilewallet.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.javaclass.mobilewalletmanagementapis.reversal.entity.Balances;
+import org.springframework.stereotype.Component;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Component
 @Entity
 @Table(name = "WLT_T_ACCOUNT_DETAILS")
 public class MobileWallet implements Serializable {
@@ -25,6 +27,10 @@ public class MobileWallet implements Serializable {
     private String dateOfBirth;
     private boolean accountDisabled;
     private long requestId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "balance_id", referencedColumnName = "account_number")
+    private Balances balance;
 
     public MobileWallet() {
 
@@ -183,6 +189,18 @@ public class MobileWallet implements Serializable {
 
     public void setAccountDisabled(boolean accountDisabled) {
         this.accountDisabled = accountDisabled;
+    }
+
+    public float getBalance() {
+        return this.balance.getBalance();
+    }
+
+    public void setBalance(float balance) {
+        this.balance.setBalance(balance);
+    }
+
+    public String getCustomerName() {
+        return this.firstName + ' ' + this.lastName;
     }
 
     @Override
